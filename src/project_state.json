@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-remove-the-light-dark-mode-toggle-from-the-ui-so-users-cannot-switch-themes-from-within-the-app",
+      "title": "Remove the light/dark mode toggle from the UI so users cannot switch themes from within the app.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-app-render-in-dark-styling-by-default-on-every-load-independent-of-system-theme-preference-and-any-previously-stored-theme-using-the-existing-tailwind-class-based-dark-theme-variables",
+      "title": "Make the app render in dark styling by default on every load (independent of system theme preference and any previously stored theme), using the existing Tailwind class-based dark theme variables.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-retire-client-side-theme-persistence-toggling-logic-that-is-no-longer-needed-after-enforcing-always-on-dark-styling",
+      "title": "Remove or retire client-side theme persistence/toggling logic that is no longer needed after enforcing always-on dark styling.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Use an overall dark styling/theme and omit any dark mode toggle.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Remove theme toggle and enforce always-on dark styling",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

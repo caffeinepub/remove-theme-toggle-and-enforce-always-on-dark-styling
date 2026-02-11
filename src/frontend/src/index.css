@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(98% 0.01 120);
+    --foreground: oklch(20% 0.02 120);
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(20% 0.02 120);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(20% 0.02 120);
+    --primary: oklch(55% 0.18 165);
+    --primary-foreground: oklch(98% 0.01 165);
+    --secondary: oklch(92% 0.03 165);
+    --secondary-foreground: oklch(25% 0.02 165);
+    --muted: oklch(94% 0.02 120);
+    --muted-foreground: oklch(50% 0.02 120);
+    --accent: oklch(65% 0.20 45);
+    --accent-foreground: oklch(98% 0.01 45);
+    --destructive: oklch(55% 0.22 25);
+    --destructive-foreground: oklch(98% 0.01 25);
+    --border: oklch(88% 0.02 120);
+    --input: oklch(88% 0.02 120);
+    --ring: oklch(55% 0.18 165);
+    --radius: 0.5rem;
+    --chart-1: oklch(55% 0.18 165);
+    --chart-2: oklch(65% 0.20 45);
+    --chart-3: oklch(60% 0.15 280);
+    --chart-4: oklch(70% 0.18 120);
+    --chart-5: oklch(50% 0.16 340);
+  }
+
+  .dark {
+    --background: oklch(18% 0.02 120);
+    --foreground: oklch(95% 0.01 120);
+    --card: oklch(20% 0.02 120);
+    --card-foreground: oklch(95% 0.01 120);
+    --popover: oklch(20% 0.02 120);
+    --popover-foreground: oklch(95% 0.01 120);
+    --primary: oklch(65% 0.18 165);
+    --primary-foreground: oklch(18% 0.02 165);
+    --secondary: oklch(28% 0.03 165);
+    --secondary-foreground: oklch(95% 0.01 165);
+    --muted: oklch(28% 0.02 120);
+    --muted-foreground: oklch(65% 0.02 120);
+    --accent: oklch(70% 0.20 45);
+    --accent-foreground: oklch(18% 0.02 45);
+    --destructive: oklch(60% 0.22 25);
+    --destructive-foreground: oklch(95% 0.01 25);
+    --border: oklch(32% 0.02 120);
+    --input: oklch(32% 0.02 120);
+    --ring: oklch(65% 0.18 165);
+    --chart-1: oklch(65% 0.18 165);
+    --chart-2: oklch(70% 0.20 45);
+    --chart-3: oklch(65% 0.15 280);
+    --chart-4: oklch(75% 0.18 120);
+    --chart-5: oklch(60% 0.16 340);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}

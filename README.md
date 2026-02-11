@@ -1,2 +1,3 @@
-# remove-theme-toggle-and-enforce-always-on-dark-styling
-Exported from Caffeine project: Remove theme toggle and enforce always-on dark styling
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

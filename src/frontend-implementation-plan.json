@@ -1,0 +1,64 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Remove theme toggle and enforce always-on dark styling",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Remove the theme toggle control from the header so users cannot switch themes in-app.",
+      "acceptanceCriteria": [
+        "The header no longer renders a theme toggle button/icon.",
+        "No UI control remains that toggles between light and dark modes.",
+        "The app builds successfully with no unused/failed imports related to the removed toggle."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove the ThemeToggle import and stop rendering the ThemeToggle in the header actions area."
+        },
+        {
+          "path": "frontend/src/features/theme/ThemeToggle.tsx",
+          "operation": "delete",
+          "description": "Delete the ThemeToggle component to ensure no theme toggle UI can be reintroduced via leftover code."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Force dark styling on every load (ignoring system preference and any stored theme) using existing Tailwind class-based dark variables, with no light-theme flash.",
+      "acceptanceCriteria": [
+        "On first load (fresh browser profile), the app renders in dark theme.",
+        "If localStorage contains theme='light' from a previous version/session, the app still renders in dark theme on load.",
+        "There is no flash of light theme before dark theme is applied (no visible FOUC)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the pre-React theme bootstrapping so the document is always rendered in dark mode (ensure the 'dark' class is applied immediately on load) and ignore/neutralize any previously stored theme value to prevent a light-theme flash."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Remove client-side theme persistence and runtime toggling logic now that the app is always dark.",
+      "acceptanceCriteria": [
+        "No code path attempts to toggle the document 'dark' class at runtime based on a stored theme value.",
+        "Theme-related code is either deleted or left unused-free (no ESLint/TypeScript errors and no dead imports in the app entry/layout components)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/theme/useTheme.ts",
+          "operation": "delete",
+          "description": "Delete the theme state/persistence hook that reads/writes localStorage and toggles the document 'dark' class at runtime."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Retire any remaining theme persistence logic in the early theme script (stop reading localStorage/system preference for theme selection) so no runtime path can re-enable light mode."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-remove-the-light-dark-mode-toggle-from-the-ui-so-users-cannot-switch-themes-from-within-the-app",
+      "featureTitle": "Remove the light/dark mode toggle from the UI so users cannot switch themes from within the app.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/theme/ThemeToggle.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-make-the-app-render-in-dark-styling-by-default-on-every-load-independent-of-system-theme-preference-and-any-previously-stored-theme-using-the-existing-tailwind-class-based-dark-theme-variables",
+      "featureTitle": "Make the app render in dark styling by default on every load (independent of system theme preference and any previously stored theme), using the existing Tailwind class-based dark theme variables.",
+      "files": [
+        "frontend/index.html"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-or-retire-client-side-theme-persistence-toggling-logic-that-is-no-longer-needed-after-enforcing-always-on-dark-styling",
+      "featureTitle": "Remove or retire client-side theme persistence/toggling logic that is no longer needed after enforcing always-on dark styling.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/features/theme/useTheme.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

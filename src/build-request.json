@@ -1,0 +1,72 @@
+{
+  "kind": "build_request",
+  "title": "Remove theme toggle and enforce always-on dark styling",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Remove the light/dark mode toggle from the UI so users cannot switch themes from within the app.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Omit the dark mode toggle. Use an overall dark styling."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The header no longer renders a theme toggle button/icon.",
+        "No UI control remains that toggles between light and dark modes.",
+        "The app builds successfully with no unused/failed imports related to the removed toggle."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Make the app render in dark styling by default on every load (independent of system theme preference and any previously stored theme), using the existing Tailwind class-based dark theme variables.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Omit the dark mode toggle. Use an overall dark styling."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On first load (fresh browser profile), the app renders in dark theme.",
+        "If localStorage contains theme='light' from a previous version/session, the app still renders in dark theme on load.",
+        "There is no flash of light theme before dark theme is applied (no visible FOUC)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Remove or retire client-side theme persistence/toggling logic that is no longer needed after enforcing always-on dark styling.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Omit the dark mode toggle. Use an overall dark styling."
+        ]
+      },
+      "acceptanceCriteria": [
+        "No code path attempts to toggle the document 'dark' class at runtime based on a stored theme value.",
+        "Theme-related code is either deleted or left unused-free (no ESLint/TypeScript errors and no dead imports in the app entry/layout components)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (read-only).",
+    "Do not modify immutable hook files under frontend/src/hooks (including Internet Identity and actor hooks)."
+  ],
+  "nonGoals": [
+    "Supporting light mode or a user-selectable theme switcher.",
+    "Adding new theming features beyond enforcing a consistent dark appearance."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
