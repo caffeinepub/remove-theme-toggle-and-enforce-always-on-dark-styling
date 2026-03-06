@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "App project including magnetometer support and UI theming (dark theme).",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-a-complete-magnetometer-calibration-workflow-in-the-imu-dashboard-so-users-can-calibrate-the-magnetometer-from-the-ui-and-have-the-calibration-applied-to-live-magnetometer-values-and-marg-orientation-updates",
+      "title": "Add a complete magnetometer calibration workflow in the IMU dashboard so users can calibrate the magnetometer from the UI and have the calibration applied to live magnetometer values and MARG orientation updates.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-dark-theme-layout-across-the-app-always-on-dark-styling-and-ensure-all-major-layout-surfaces-and-components-consistently-use-dark-theme-tokens",
+      "title": "Apply a dark theme layout across the app (always-on dark styling) and ensure all major layout surfaces and components consistently use dark theme tokens.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add a magnetometer calibration function.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Apply a dark theme layout for the app.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Add magnetometer calibration workflow and apply dark theme layout",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

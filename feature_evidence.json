@@ -1,0 +1,48 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-complete-magnetometer-calibration-workflow-in-the-imu-dashboard-so-users-can-calibrate-the-magnetometer-from-the-ui-and-have-the-calibration-applied-to-live-magnetometer-values-and-marg-orientation-updates",
+      "featureTitle": "Add a complete magnetometer calibration workflow in the IMU dashboard so users can calibrate the magnetometer from the UI and have the calibration applied to live magnetometer values and MARG orientation updates.",
+      "files": [
+        "frontend/src/features/imu/IMUDashboard.tsx",
+        "frontend/src/features/imu/calibration.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-dark-theme-layout-across-the-app-always-on-dark-styling-and-ensure-all-major-layout-surfaces-and-components-consistently-use-dark-theme-tokens",
+      "featureTitle": "Apply a dark theme layout across the app (always-on dark styling) and ensure all major layout surfaces and components consistently use dark theme tokens.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Magnetometer calibration workflow + always-on dark theme",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a complete magnetometer calibration workflow in the IMU Calibration tab and ensure calibrated magnetometer values are applied consistently to displays and MARG fusion.",
+      "acceptanceCriteria": [
+        "In the Calibration tab, there is a dedicated Magnetometer calibration section with a clear start action, progress indication, and a way to cancel.",
+        "When magnetometer calibration completes, the computed calibration parameters are shown to the user (offsets and scales).",
+        "Magnetometer calibration can be reset back to defaults (offsets=0, scales=1) from the UI.",
+        "The calibrated magnetometer values are used consistently anywhere magnetometer data is displayed and anywhere magnetometer data is fed into the orientation filter when the magnetometer is available.",
+        "If the magnetometer is unavailable, the UI communicates that magnetometer calibration is disabled/unavailable and does not start calibration."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/imu/IMUDashboard.tsx",
+          "operation": "modify",
+          "description": "Implement a dedicated Magnetometer calibration section inside the Calibration tab: (1) guard Start Calibration when magnetometer is unavailable (disable action + show clear unavailable messaging), (2) show calibration progress via the existing Progress component with Cancel, (3) on completion display computed offsets/scales, and (4) add a Reset-to-defaults action that sets mag calibration to offsets=0 and scales=1. Refactor magnetometer value rendering to use applyMagCalibration so displayed values match exactly what is used for MARG updates. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/imu/calibration.ts",
+          "operation": "modify",
+          "description": "Add/standardize exported magnetometer default calibration constants/helpers (e.g., a default MagCalibration object) and ensure applyMagCalibration/calibrateMagnetometer behavior supports the UI workflow (reset, display of offsets/scales) without duplicating magic values across components."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Apply always-on dark theme styling across the app shell and ensure major surfaces consistently use dark theme tokens.",
+      "acceptanceCriteria": [
+        "On every load, the app renders in dark mode regardless of system preference, with no in-app theme toggle exposed.",
+        "App shell surfaces (header, main background, cards, footer) use theme variables/classes so the UI is consistently dark and readable.",
+        "No prominent light-theme backgrounds remain in the main app layout; contrast meets typical dark UI readability expectations (text, borders, muted text)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Confirm/strengthen always-on dark mode by ensuring the root element is forced into the 'dark' class on initial load (and no theme-toggle logic exists). Keep the approach consistent with Tailwind's class-based darkMode."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Adjust global base styling to ensure dark theme tokens are the effective defaults (e.g., ensure html/body surfaces reliably use bg-background/text-foreground under the forced 'dark' class) and that borders/muted text remain readable in dark mode."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Audit and update app shell layout surfaces (header/main/footer) to ensure all backgrounds, borders, and text rely exclusively on theme tokens (bg-background/bg-card/text-foreground/text-muted-foreground/border-border) so no light backgrounds remain prominent in dark mode."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "kind": "build_request",
+  "title": "Add magnetometer calibration workflow and apply dark theme layout",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a complete magnetometer calibration workflow in the IMU dashboard so users can calibrate the magnetometer from the UI and have the calibration applied to live magnetometer values and MARG orientation updates.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "The magnetometer needs calibration function as well. Please include it."
+        ]
+      },
+      "acceptanceCriteria": [
+        "In the Calibration tab, there is a dedicated Magnetometer calibration section with a clear start action, progress indication, and a way to cancel.",
+        "When magnetometer calibration completes, the computed calibration parameters are shown to the user (offsets and scales).",
+        "Magnetometer calibration can be reset back to defaults (offsets=0, scales=1) from the UI.",
+        "The calibrated magnetometer values are used consistently anywhere magnetometer data is displayed and anywhere magnetometer data is fed into the orientation filter when the magnetometer is available.",
+        "If the magnetometer is unavailable, the UI communicates that magnetometer calibration is disabled/unavailable and does not start calibration."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Apply a dark theme layout across the app (always-on dark styling) and ensure all major layout surfaces and components consistently use dark theme tokens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Also please apply a dark theme layout for the app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On every load, the app renders in dark mode regardless of system preference, with no in-app theme toggle exposed.",
+        "App shell surfaces (header, main background, cards, footer) use theme variables/classes so the UI is consistently dark and readable.",
+        "No prominent light-theme backgrounds remain in the main app layout; contrast meets typical dark UI readability expectations (text, borders, muted text)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (Shadcn components must be composed, not modified).",
+    "Do not edit immutable hook paths listed in SYSTEM_CONTEXT (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Backend must remain a single Motoko actor; no new backend services."
+  ],
+  "nonGoals": [
+    "Persisting calibration parameters to the backend or syncing them across devices/users (unless explicitly required later).",
+    "Adding third-party authentication providers (only Internet Identity is supported).",
+    "Adding new plotting/graphing features for sensor streams beyond what is necessary for calibration UX."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

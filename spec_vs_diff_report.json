@@ -1,0 +1,34 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T19:55:06.092Z",
+  "summary": "REQ-1 (magnetometer calibration workflow + applying calibration to live mag values and MARG fusion) and REQ-2 (always-on dark theme) appear to be implemented based on the updated IMU dashboard logic, added magnetometer calibration utilities, and forced dark-mode styling. The diff also introduces some UI/feature elements that were not explicitly requested (footer attribution and additional calibration workflows).",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Added caffeine.ai attribution/footer branding with icon/link in the app shell.",
+      "reason": "BuildRequest REQ-1/REQ-2 do not ask for adding third-party attribution/branding in the UI.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "description": "Accelerometer calibration and gyroscope calibration workflows/utilities (beyond magnetometer calibration).",
+      "reason": "REQ-1 is specifically about a magnetometer calibration workflow; additional sensor calibration workflows are not requested.",
+      "evidence": [
+        "frontend/src/features/imu/calibration.ts",
+        "frontend/src/features/imu/IMUDashboard.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.64,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/features/imu/IMUDashboard.tsx",
+    "frontend/src/features/imu/calibration.ts",
+    "frontend/src/index.css",
+    "project_state.json"
+  ]
+}
